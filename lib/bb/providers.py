@@ -260,7 +260,7 @@ def filterProvidersRunTime(providers, item, cfgData, dataCache):
         pn = dataCache.pkg_fn[p]
         provides = dataCache.pn_provides[pn]
         for provide in provides:
-            bb.msg.note(2, bb.msg.domain.Provider, "checking PREFERRED_PROVIDER_%s" % (provide))
+            bb.msg.debug(2, bb.msg.domain.Provider, "checking PREFERRED_PROVIDER_%s" % (provide))
             prefervar = bb.data.getVar('PREFERRED_PROVIDER_%s' % provide, cfgData, 1)
             if prefervar == pn:
                 var = "PREFERRED_PROVIDER_%s = %s" % (provide, prefervar)

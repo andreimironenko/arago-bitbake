@@ -71,19 +71,9 @@ class Wget(Fetch):
             httpproxy = None
             ftpproxy = None
             if uri_type == 'http':
-                httpproxy = data.getVar("HTTP_PROXY", d, True)
-                httpproxy_ignore = (data.getVar("HTTP_PROXY_IGNORE", d, True) or "").split()
-                for p in httpproxy_ignore:
-                    if uri_host.endswith(p):
-                        httpproxy = None
-                        break
+                httpproxy = data.getVar("http_proxy", d, True)
             if uri_type == 'ftp':
-                ftpproxy = data.getVar("FTP_PROXY", d, True)
-                ftpproxy_ignore = (data.getVar("HTTP_PROXY_IGNORE", d, True) or "").split()
-                for p in ftpproxy_ignore:
-                    if uri_host.endswith(p):
-                        ftpproxy = None
-                        break
+                ftpproxy = data.getVar("ftp_proxy", d, True)
             if httpproxy:
                 fetchcmd = "http_proxy=" + httpproxy + " " + fetchcmd
             if ftpproxy:

@@ -69,6 +69,7 @@ class Wget(Fetch):
             fetchcmd = fetchcmd.replace("${URI}", uri.split(";")[0])
             fetchcmd = fetchcmd.replace("${FILE}", ud.basename)
             httpproxy = None
+            httpsproxy = None
             ftpproxy = None
             noproxy = None
             if uri_type == 'http':

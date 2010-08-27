@@ -73,11 +73,15 @@ class Wget(Fetch):
             noproxy = None
             if uri_type == 'http':
                 httpproxy = data.getVar("http_proxy", d, True)
+            if uri_type == 'https':
+                httpsproxy = data.getVar("https_proxy", d, True)
             if uri_type == 'ftp':
                 ftpproxy = data.getVar("ftp_proxy", d, True)
             noproxy = data.getVar("no_proxy", d, True)
             if httpproxy:
                 fetchcmd = "http_proxy=" + httpproxy + " " + fetchcmd
+            if httpsproxy:
+                fetchcmd = "https_proxy=" + httpsproxy + " " + fetchcmd
             if ftpproxy:
                 fetchcmd = "ftp_proxy=" + ftpproxy + " " + fetchcmd
             if noproxy:
